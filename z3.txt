@@ -1,0 +1,32 @@
+# It is TRUE that (p -> q && q -> p) <-> (p <-> q)
+from z3 import *
+p = Bool('p')
+q = Bool('q')
+s = Solver()
+s.add(Implies(p,q))
+s.add(Implies(q,p))
+s.add(p == q)
+s.check()
+
+# It is NOT TRUE that !(p || q) && (p && q)
+from z3 import *
+p = Bool('p')
+q = Bool('q')
+s = Solver()
+s.add(Not(Or(p,q)))
+s.add(And(p,q))
+s.check()
+
+# It is possible that (p || q) ** !(p && q)
+from z3 import *
+p = Bool('p')
+q = Bool('q')
+s = Solver()
+s.add(Or(p,q))
+s.add(Not(And(p,q)))
+s.check()
+s.model()
+s.solve()
+
+
+# Can we Fibonacci?
