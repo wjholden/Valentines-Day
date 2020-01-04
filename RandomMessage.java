@@ -2,30 +2,18 @@ import java.util.*;
 
 public class RandomMessage {
 
-    static Map<Long,Integer> s;
-
-    static {
-        s = new LinkedHashMap<>();
-        s.put(238344791200146L, 1);
-        s.put(173881529074270L, 3);
-        s.put(242751563301421L, 1);
-        s.put(165072168521792L, 3);
-        s.put(141706662123585L, 5);
-        s.put(141063381304714L, 2);
-        s.put(177401611350426L, 3);
-        s.put(244895512287375L, 2);
-        s.put(195989853273583L, 4);
-        s.put(50779719227499L, 3);
-        s.put(21667526779401L, 3);
-        s.put(187591116637459L, 3);
-    }
+    private static long[] l = new long[] {
+        247057036367419L, 35543432715160L, 253980514236592L, 89613466789088L,
+        53058416132968L, 111106152524424L, 231264589651259L, 218141079436269L,
+        203524665566275L, 99273655041031L, 217249958230482L
+    };
 
     public static void main(String args[]) {
-        s.forEach((k,v) -> {
-            Random random = new Random(k);
-            for (int i = 0 ; i < v ; i++) {
-                System.out.print((char)(random.nextInt() & 95));
-            }
-        });
+        for (int i = 0 ; i < l.length ; i++) {
+            Random random = new Random(l[i]);
+            System.out.print((char)(random.nextInt() & 95));
+            System.out.print((char)(random.nextInt() & 95));
+            System.out.print((char)(random.nextInt() & 95));
+        }
     }
 }
