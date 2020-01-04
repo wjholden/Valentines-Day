@@ -19,7 +19,8 @@ def find_message_seed(msg, start):
     states = [BitVec("state{n}".format(n = i), 64) for i in range(0,7)]
 
     # Again, we don't know the seed, but we do not know the seed will be used
-    # to generate the initial state of the PRNG.
+    # to generate the initial state of the PRNG. Also, yes the
+    # multiplier gets "anded" to the seed, not multiplied.
     # http://hg.openjdk.java.net/jdk10/jdk10/jdk/file/777356696811/src/java.base/share/classes/java/util/Random.java#l145
     s.add(states[0] == (seed ^ multiplier) & mask)
 
