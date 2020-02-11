@@ -18,8 +18,8 @@ def find_message_seed(msg, start):
     seed = BitVec('seed', 64)
     states = [BitVec("state{n}".format(n = i), 64) for i in range(0,7)]
 
-    # Again, we don't know the seed, but we do not know the seed will be used
-    # to generate the initial state of the PRNG. Also, yes the
+    # Again, we don't know the seed, but we do not know the seed will be
+    # used to generate the initial state of the PRNG. Also, yes the
     # multiplier gets "anded" to the seed, not multiplied.
     # http://hg.openjdk.java.net/jdk10/jdk10/jdk/file/777356696811/src/java.base/share/classes/java/util/Random.java#l145
     s.add(states[0] == (seed ^ multiplier) & mask)
@@ -47,7 +47,8 @@ def find_message_seed(msg, start):
     #
     # This program can handle spaces.
     # Leaving the fifth bit free will allow you to work with more 
-    # characters, but you might not be able to find solutions for your input.
+    # characters, but you might not be able to find solutions for your
+    # input.
     #
     # I tried making this an "or" statement so that the solver could
     # branch with the fifth bit set or unset. Bad idea.
